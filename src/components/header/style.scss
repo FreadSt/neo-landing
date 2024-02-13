@@ -1,0 +1,17 @@
+.header {
+    width: 100%;
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-sizing: border-box;
+    & img {
+        cursor: pointer;
+    }
+    .header__social-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}

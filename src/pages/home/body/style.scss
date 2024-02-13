@@ -1,0 +1,71 @@
+.hp-body-wrapper{
+  width: 100%;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  background:
+          linear-gradient(0deg, rgba(185.14, 0, 255, 0.60) 0%, rgba(250, 250, 250, 0) 100%, rgba(185.14, 0, 255, 0) 100%),
+          linear-gradient(180deg, #0E0E0E 0%, rgba(14, 14, 14, 0) 100%);
+  .linear-bg-top{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    //background: linear-gradient(to top, transparent, rgba(0,0,0,1), transparent);
+  }
+  .linear-bg-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  .bg-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("../../../assets/images/noise-cell-bg.svg");
+    .background-body{
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .what_is_neo{
+      box-sizing: border-box;
+      display: flex;
+      max-width: 80%;
+      width: 100%;
+      flex-direction: column;
+      gap: 70px 0;
+      padding: 100px 0;
+      z-index: 3;
+      .neo-body-text{
+        display: flex;
+        gap: 70px;
+        .neo-description{
+          .sub-title-body{
+            font-family: actay, 'sans-serif';
+            color: #00FF84;
+          }
+        }
+        .neo-text{
+
+        }
+      }
+    }
+    .top-body-dots{
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
