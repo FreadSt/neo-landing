@@ -5,11 +5,13 @@ import { Navbar } from '../../../components/navbar/Navbar';
 import downDots from '../../../assets/images/image 18.svg';
 import './style.scss';
 import Header from '../../../components/header/Header';
+import videoBg from '../../../assets/images/Hero_BG_Video_Alt (1).mp4';
 
 export const HomepageHeader = () => {
   return (
     <div className={'homepage-header-box'}>
       <img src={upperDots} alt={'up-dots'} className={'up-dots'} />
+      <video src={videoBg} autoPlay loop className={'video'} />
       <Header />
       <div className={'poster-container'}>
         <div className={'home-title'}>
@@ -26,10 +28,10 @@ export const HomepageHeader = () => {
       </div>
       <div className={'navbar-box'}>
         <img src={tabbar} alt={'home-page-tabs'} className={'tabs-bar-home'} />
-        <Navbar />
       </div>
+      <Navbar />
       <img src={downDots} alt={'up-dots'} className={'down-dots'} />
-      <div className={'linear-bg'} />
+      {/*<div className={'linear-bg'} />*/}
     </div>
   );
 };

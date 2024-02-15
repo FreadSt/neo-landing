@@ -1,9 +1,8 @@
 .homepage-header-box{
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background: url("../../../assets/images/image 17 (1).jpg") center no-repeat;
+  //background: url("../../../assets/images/image 17 (1).jpg") center no-repeat;
   background-size: cover;
-  padding: 5vh 1vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -11,12 +10,24 @@
   text-align: center;
   font-family: 'ActayWideBold', sans-serif;
   justify-content: space-between;
-  .linear-bg{
-    position: absolute;
-    bottom: -50vh;
+  position: relative;
+  padding: 5vh 0;
+  //.linear-bg{
+  //  position: absolute;
+  //  bottom: -50vh;
+  //  width: 100%;
+  //  height: 100vh;
+  //  background: linear-gradient(to top, transparent, rgba(0,0,0,1), transparent);
+  //}
+  .video{
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to top, transparent, rgba(0,0,0,1), transparent);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    object-fit: cover;
   }
   .up-dots{
     width: 100%;
@@ -60,7 +71,7 @@
     flex-direction: column;
     align-items: center;
     .tabs-bar-home{
-      margin-bottom: 30px;
+      margin-bottom: 130px;
     }
   }
 }

@@ -3,11 +3,17 @@ import dotsTop from '../../../assets/images/image 16.svg';
 import topLine from '../../../assets/images/homepageline.svg';
 import botLine from '../../../assets/images/homepagesec_line.svg';
 import hand from '../../../assets/images/hand-love-sign-15.svg';
+import dots from '../../../assets/images/thripleDots.svg';
+import fireball from '../../../assets/images/ecology-global-warming-globe-fire-31.svg';
+import { Button } from '../../../components/button/Button';
+import lowerLine from '../../../assets/images/down_block-placeholder.svg';
+import { LATEST_NEWS_CARDS } from '../../../constants/homePageConst';
+import NewsCard from './NewsCards';
 
 export const Body = () => {
   return (
     <div className={'hp-body-wrapper'}>
-      <div className={'linear-bg-top'} />
+      {/*<div className={'linear-bg-top'} />*/}
       <div className={'bg-wrapper'}>
         <img src={dotsTop} className={'top-body-dots'} alt={'body-dots'} />
         <div className={'what_is_neo'}>
@@ -16,7 +22,8 @@ export const Body = () => {
             <div className={'neo-description'}>
               <span className={'sub-title-body'}>What is Neo masterpiece films?</span>
               <p className={'title-body-text'}>
-                A Web 3 Film Studio. For the People, by the People. <img src={hand} alt={'hand'} />
+                A Web 3 Film Studio. For the People, by the People.
+                <img src={hand} alt={'hand'} className={'hand'} />
               </p>
             </div>
             <p className={'neo-text'}>
@@ -28,7 +35,34 @@ export const Body = () => {
           <img src={botLine} alt={'neo-b-line'} />
         </div>
       </div>
-      <div className={'linear-bg-bottom'} />
+      <div className={'main-hp-body-title'}>
+        <div className={'box-title-name'}>
+          <h3 className={'title-text'}>
+            neo films latest news <img src={fireball} alt={'hp-body-fireball'} />
+          </h3>
+          <div className={'button-box'}>
+            <img src={dots} alt={'hp-b-dots'} />
+            <div className={'hr-line'} />
+            <Button text={'other news'} style={{ width: '189px' }} />
+          </div>
+        </div>
+        <div className={'hp-cards-body-box'}>
+          {LATEST_NEWS_CARDS.map((card, index) => (
+            <NewsCard
+              key={index}
+              mark={card.mark}
+              date={card.date}
+              title={card.title}
+              img={card.img}
+              buttonText={card.buttonText}
+              desc={card.desc}
+              glitchEffect={card.glitchEffect}
+            />
+          ))}
+        </div>
+      </div>
+      <img src={lowerLine} alt={'hp-b-lower-line'} className={'hp-b-lower-line'} />
+      {/*<div className={'linear-bg-bottom'} />*/}
     </div>
   );
 };

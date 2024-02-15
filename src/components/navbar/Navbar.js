@@ -8,14 +8,37 @@ import { useEffect, useState } from 'react';
 
 export const Navbar = () => {
   const location = useLocation();
+  const [navbarHeight, setNavbarHeight] = useState(5);
   const [initialActive, setInitialActive] = useState(location.pathname);
 
   useEffect(() => {
     setInitialActive(location.pathname);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const maxNavbarHeight = 25;
+      const minNavbarHeight = 8;
+      const scrollRange = window.innerHeight * 0.8;
+      if (scrollPosition >= documentHeight - scrollRange) {
+        const newHeight = Math.min(
+          maxNavbarHeight,
+          minNavbarHeight +
+            ((scrollPosition - (documentHeight - scrollRange)) / scrollRange) *
+              (maxNavbarHeight - minNavbarHeight),
+        );
+        setNavbarHeight(newHeight);
+      } else {
+        setNavbarHeight(minNavbarHeight);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [location.pathname]);
 
   return (
-    <div className="navbar-wrapper">
+    <div className="navbar-wrapper" style={{ bottom: `${navbarHeight}vh` }}>
       <img className="clip-top-left" src={clipleft} />
       <div className={'nav-inner-content'}>
         <div className="navigation-container">
