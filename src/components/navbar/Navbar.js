@@ -8,15 +8,38 @@ import { useEffect, useState } from 'react';
 
 export const Navbar = () => {
   const location = useLocation();
+  const [navbarHeight, setNavbarHeight] = useState(5);
   const [initialActive, setInitialActive] = useState(location.pathname);
 
   useEffect(() => {
     setInitialActive(location.pathname);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const maxNavbarHeight = 25;
+      const minNavbarHeight = 5;
+      const scrollRange = window.innerHeight * 0.8;
+      if (scrollPosition >= documentHeight - scrollRange) {
+        const newHeight = Math.min(
+          maxNavbarHeight,
+          minNavbarHeight +
+            ((scrollPosition - (documentHeight - scrollRange)) / scrollRange) *
+              (maxNavbarHeight - minNavbarHeight),
+        );
+        setNavbarHeight(newHeight);
+      } else {
+        setNavbarHeight(minNavbarHeight);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [location.pathname]);
 
   return (
-    <div className="navbar-wrapper">
-      <img className="clip-top-left" src={clipleft} />
+    <div className="navbar-wrapper" style={{ bottom: `${navbarHeight}vh` }}>
+      <img className="clip-top-left" src={clipleft} alt={'navbar-clip'} />
       <div className={'nav-inner-content'}>
         <div className="navigation-container">
           {NAVBAR_TABS.map((item, i) => {
@@ -28,14 +51,17 @@ export const Navbar = () => {
                   className={`nav-title ${isActive ? 'active-link' : ''}`}
                   onClick={() => setInitialActive(item.path)}
                   style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
-                  {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
+                  {item.title}{' '}
+                  {(item.mark && <p>{item.mark}</p>) || (
+                    <img src={item.icon} alt={'navbar-icon-img'} />
+                  )}
                 </Link>
               </div>
             );
           })}
         </div>
       </div>
-      <img className="clip-bottom-right" src={clipright} />
+      <img className="clip-bottom-right" src={clipright} alt={'navbar-clip-r'} />
     </div>
   );
 };

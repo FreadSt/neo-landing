@@ -1,9 +1,8 @@
 .homepage-header-box{
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background: url("../../../assets/images/image 17 (1).jpg") center no-repeat;
+  //background: url("../../../assets/images/image 17 (1).jpg") center no-repeat;
   background-size: cover;
-  padding: 5vh 1vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -11,12 +10,24 @@
   text-align: center;
   font-family: 'ActayWideBold', sans-serif;
   justify-content: space-between;
-  .linear-bg{
-    position: absolute;
-    bottom: -50vh;
+  position: relative;
+  padding: 5vh 0;
+  //.linear-bg{
+  //  position: absolute;
+  //  bottom: -50vh;
+  //  width: 100%;
+  //  height: 100vh;
+  //  background: linear-gradient(to top, transparent, rgba(0,0,0,1), transparent);
+  //}
+  .video{
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to top, transparent, rgba(0,0,0,1), transparent);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    object-fit: cover;
   }
   .up-dots{
     width: 100%;
@@ -29,6 +40,9 @@
     position: absolute;
   }
   .poster-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .homepage-btn{
       margin-top: 40px;
       cursor: pointer;
@@ -54,13 +68,70 @@
         font-size: 20px;
       }
     }
+    .btn-box{
+      margin-top: 40px;
+      max-width: 225px;
+    }
   }
   .navbar-box{
     display: flex;
     flex-direction: column;
     align-items: center;
     .tabs-bar-home{
-      margin-bottom: 30px;
+      margin-bottom: 130px;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .homepage-header-box{
+    .poster-container{
+      .btn-box{
+        max-width: 430px;
+        width: 100%;
+        .btn-body{
+          justify-content: center;
+          .button-text{
+            width: auto;
+          }
+        }
+      }
+      .home-title {
+        h5 {
+          font-size: 24px;  // Adjust font size for smaller screens
+        }
+
+        h1 {
+          font-size: 64px;  // Adjust font size for smaller screens
+          margin: 20px 0;   // Adjust margin for smaller screens
+        }
+
+        span {
+          font-size: 16px;  // Adjust font size for smaller screens
+        }
+      }
+    }
+    .navbar-box{
+      max-width: 430px;
+      width: 100%;
+      .tabs-bar-home{
+        width: 80%;
+        margin: 0;
+      }
+    }
+    .sidebar-mob-btn{
+      position: absolute;
+      z-index: 2;
+      right: 7vw;
+      bottom: 10vh;
+    }
+  }
+  .video {
+    height: 50vh;   // Adjust video height for smaller screens
+  }
+  .navbar-box {
+    .tabs-bar-home {
+      margin-bottom: 60px;  // Adjust margin for smaller screens
     }
   }
 }

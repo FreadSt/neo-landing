@@ -1,6 +1,7 @@
 .navbar-wrapper{
   display: flex;
-  z-index: 2;
+  z-index: 22;
+  position: fixed;
   .nav-inner-content{
     padding: 10px 0;
     box-sizing: border-box;
