@@ -51,10 +51,7 @@ export const Navbar = () => {
                   className={`nav-title ${isActive ? 'active-link' : ''}`}
                   onClick={() => setInitialActive(item.path)}
                   style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
-                  {item.title}{' '}
-                  {(item.mark && <p>{item.mark}</p>) || (
-                    <img src={item.icon} alt={'navbar-icon-img'} />
-                  )}
+                  {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
                 </Link>
               </div>
             );

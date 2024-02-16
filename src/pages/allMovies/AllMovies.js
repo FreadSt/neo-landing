@@ -34,7 +34,7 @@ export const AllMovies = () => {
                 <span className={'all-m-title-card'}>{card.title}</span>
                 <span className={'date-all-movies'}>{card.date}</span>
               </div>
-              <img src={card.img} className={'am-poster-img'} alt={'am-post-image-am'} />
+              <img src={card.img} className={'am-poster-img'} alt={'am-post-am'} />
             </div>
           </Link>
         ))}
