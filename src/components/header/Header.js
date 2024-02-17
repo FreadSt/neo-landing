@@ -7,9 +7,26 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
+  const isMobile = window.innerWidth <= 430;
   return (
     <div className="header">
-      <img src={neoLogo} alt="logo" onClick={() => navigate('/', { replace: true })} />
+      {isMobile ? (
+        <img
+          src={neoLogo}
+          alt="logo"
+          onClick={() => navigate('/', { replace: true })}
+          className={'logo-header'}
+        />
+      ) : (
+        <div className={'glitch-img'}>
+          <img
+            src={neoLogo}
+            alt="logo"
+            onClick={() => navigate('/', { replace: true })}
+            className={'logo-header'}
+          />
+        </div>
+      )}
       <div className="header__social-wrapper">
         <img src={x} alt="X" />
         <img src={discord} alt="Discord" />

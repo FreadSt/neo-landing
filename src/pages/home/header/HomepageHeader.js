@@ -9,6 +9,8 @@ import { Button } from '../../../components/button/Button';
 import menuMobile from '../../../assets/images/sidebar-menu-mob.svg';
 import { useState } from 'react';
 import { MobMenu } from '../../../components/mobileMenu/MobMenu';
+import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
+import './glitch.css';
 
 export const HomepageHeader = () => {
   const [isMobileMenuOpen, setIsMobMenuOpen] = useState(false);
@@ -18,17 +20,38 @@ export const HomepageHeader = () => {
     setIsMobMenuOpen((prev) => !prev);
   };
 
+  const GlitchText = () => {
+    return (
+      <ul className="glitch" style={{ textAlign: 'center' }}>
+        <li>
+          <a href="#" style={{ fontSize: '32px' }}>
+            The
+          </a>
+        </li>
+        <li>
+          <a href="#" style={{ fontSize: '128px', textAlign: 'center' }}>
+            Maestro
+          </a>
+        </li>
+      </ul>
+    );
+  };
+
   return (
     <div className={'homepage-header-box'}>
       <img src={upperDots} alt={'up-dots'} className={'up-dots'} />
       <video src={videoBg} autoPlay loop className={'video'} />
       <Header />
       <div className={'poster-container'}>
-        <div className={'home-title'}>
-          <h5>The</h5>
-          <h1>Maestro</h1>
-          <span>Coming late 2023</span>
-        </div>
+        {isMobile ? (
+          <div className={'home-title'}>
+            <h5>The</h5>
+            <h1>Maestro</h1>
+            <span>Coming late 2023</span>
+          </div>
+        ) : (
+          <GlitchText />
+        )}
         <Button text={'watch trailer'} />
         {/*<img*/}
         {/*  src={homeBtn}*/}

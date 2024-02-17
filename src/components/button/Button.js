@@ -4,7 +4,7 @@ import clipleft from '../../assets/images/btn-clip-left.svg';
 import clipright from '../../assets/images/btn-clip-right.svg';
 import PropTypes from 'prop-types';
 import play from '../../assets/images/play-mob.svg';
-
+import './glitch.scss';
 export const Button = ({ text, style, onClick }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 430);
 
@@ -23,7 +23,17 @@ export const Button = ({ text, style, onClick }) => {
     <div className={'btn-box'} onClick={onClick}>
       <img src={clipleft} alt={'btn-clip-left'} />
       <div className={'btn-body'} style={style}>
-        <span className={'button-text'}>{text}</span>
+        {isMobile ? (
+          <span className={'button-text'}>{text}</span>
+        ) : (
+          <ul className="glitch" style={{ textAlign: 'center' }}>
+            <li style={{ height: '100%' }}>
+              <a href="#" style={{ fontSize: '13px' }}>
+                {text}
+              </a>
+            </li>
+          </ul>
+        )}
         {isMobile ? <img src={play} alt={'play-icon'} className={'arr-mob'} /> : null}
       </div>
       <img src={clipright} alt={'btn-clip-right'} />

@@ -20,8 +20,7 @@ export const MobMenu = ({ onClose }) => {
                 className={`nav-title ${isActive ? 'active-link' : ''}`}
                 onClick={() => setInitialActive(item.path)}
                 style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
-                {item.title}{' '}
-                {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} alt={'icon-a-mobile'} />}
+                {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
               </Link>
             </div>
           );
