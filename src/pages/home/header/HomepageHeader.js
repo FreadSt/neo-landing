@@ -54,11 +54,10 @@ export const HomepageHeader = () => {
       </video>
       {/*<VideoBackground />*/}
       <div className={'poster-container'}>
-        {/*<div className={'home-title'}>*/}
-        {/*  <h5>The</h5>*/}
-        {/*  <h1>Maestro</h1>*/}
-        {/*  <span>Coming late 2023</span>*/}
-        {/*</div>*/}
+        <div className={'home-title'}>
+          <h1>The Future</h1>
+          <h1>Of Filmmaking</h1>
+        </div>
         <a href={'https://vimeo.com/user109067760/review/913360625/0f57eb2d22'}>
           <Button text={'watch reel'} width={'250px'} />
         </a>
