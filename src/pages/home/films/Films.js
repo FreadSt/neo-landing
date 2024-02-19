@@ -11,6 +11,7 @@ export const Films = () => {
     navigate('/all_movies', { replace: true });
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
+
   const firstThreeFilmCards = FILM_CARDS.slice(0, 3);
 
   return (
