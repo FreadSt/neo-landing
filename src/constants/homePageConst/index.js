@@ -1,6 +1,6 @@
 import webArrow from '../../assets/images/navbar-arr.svg';
-import house from '../../assets/images/housepng.png';
-import peoples from '../../assets/images/peoplepng.png';
+import house from '../../assets/images/newsf.png';
+import peoples from '../../assets/images/newssec.png';
 import GlitchEffect from '../../components/glitch/GlitchComponent';
 export const NAVBAR_TABS = [
   {
@@ -42,20 +42,20 @@ export const NAVBAR_TABS = [
 export const LATEST_NEWS_CARDS = [
   {
     mark: 'news',
-    date: 'aug 02 2023',
+    date: 'feb 19 2024',
     title: 'Some title',
     img: house,
     glitchEffect: <GlitchEffect imgSrc={house} />,
     buttonText: 'Read More',
-    desc: 'Mi sagittis viverra auctor habitant vitae urna praesent. Pellentesque commodo condimentum eros eros. ',
+    desc: 'Neo Masterpiece Films Explores Exciting Collaboration Opportunities in Costa Rica',
   },
   {
-    date: 'aug 02 2023',
+    date: 'nov 20 2023',
     mark: 'news',
     img: peoples,
     title: 'Pretty long title taking two lines',
     buttonText: 'Read More',
-    desc: 'Venenatis neque viverra habitant est sed massa volutpat at.',
+    desc: 'Neo Masterpiece Films, a trailblazer in the realm of cinematic excellence, has set its sights on pioneering a groundbreaking innovation in the filmmaking process.',
     glitchEffect: <GlitchEffect imgSrc={house} />,
   },
 ];
