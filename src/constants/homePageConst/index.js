@@ -14,28 +14,22 @@ export const NAVBAR_TABS = [
   },
   {
     title: 'about',
-    path: '/about',
   },
   {
     title: 'news',
-    path: '/news',
   },
   {
     title: 'shop',
-    path: '/shop',
   },
   {
     title: 'services',
-    path: '/services',
   },
   {
     title: 'web3',
-    path: '/web3',
     icon: webArrow,
   },
   {
     title: 'contacts',
-    path: '/contacts',
   },
 ];
 
