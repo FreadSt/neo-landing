@@ -15,9 +15,9 @@ export const FooterHomepage = () => {
             </div>
           </div>
           <p className={'footer-hp-text'}>
-            Id vivamus habitant ac lectus diam et. Dignissim at mauris sagittis nibh maecenas
-            adipiscing. Facilisis enim nunc aliquet quis ipsum. Vitae id sodales nunc congue morbi
-            consectetur sed.
+            At Neo Masterpiece Films, we&apos;re eagerly waiting to hear from you! Let&apos;s
+            collaborate and bring your cinematic vision to life. Get in touch today, and together,
+            let&apos;s craft something truly extraordinary.
           </p>
         </div>
         <div className={'form-box'}>

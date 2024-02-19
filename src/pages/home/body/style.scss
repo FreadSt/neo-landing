@@ -1,6 +1,6 @@
 .hp-body-wrapper{
   width: 100%;
-  padding: 5vh 0;
+  padding: 150px 0;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@
     .what_is_neo{
       box-sizing: border-box;
       display: flex;
-      max-width: 80%;
+      max-width: 1140px;
       width: 100%;
       flex-direction: column;
       gap: 70px 0;
@@ -88,7 +88,8 @@
     }
   }
   .main-hp-body-title{
-    width: 80%;
+    width: 100%;
+    max-width: 1140px;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -122,6 +123,10 @@
     .hp-cards-body-box{
       display: flex;
       gap: 0 20px;
+      max-width: 1140px;
+      .background-news-img{
+        width: 100%;
+      }
       .news-card{
         position: relative;
         .news-content{

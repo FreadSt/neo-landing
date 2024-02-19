@@ -37,6 +37,7 @@ const FilmCards = ({ img, title, date, backgroundStatic, backgroundHover, button
           backgroundImage: `url(${img})`,
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
         }}
       />
       {isHovered && (

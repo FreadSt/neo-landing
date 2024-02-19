@@ -4,15 +4,16 @@ import { Navbar } from '../../../components/navbar/Navbar';
 import downDots from '../../../assets/images/image 18.svg';
 import './style.scss';
 import Header from '../../../components/header/Header';
-import videoBg from '../../../assets/images/Hero_BG_Video_Alt (1) (1).mp4';
+import videoBg from '../../../assets/images/HeroVid10.mp4';
 import { Button } from '../../../components/button/Button';
 import menuMobile from '../../../assets/images/sidebar-menu-mob.svg';
 import { useState } from 'react';
 import { MobMenu } from '../../../components/mobileMenu/MobMenu';
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import './glitch.css';
-import { VideoBackground } from '../../../components/videoPlayer/VideoBackground';
 import ReactPlayer from 'react-player';
+import VideoBackground from '../../../components/videoPlayer/VideoBackground';
+import { useNavigate } from 'react-router-dom';
 
 export const HomepageHeader = () => {
   const [isMobileMenuOpen, setIsMobMenuOpen] = useState(false);
@@ -38,26 +39,29 @@ export const HomepageHeader = () => {
       </ul>
     );
   };
+  const navigate = useNavigate();
+
+  const videoUrl = 'https://vimeo.com/user109067760/review/913360625/0f57eb2d22';
 
   return (
     <div className={'homepage-header-box'}>
       <img src={upperDots} alt={'up-dots'} className={'up-dots'} />
       <Header />
+      {/*<ReactPlayer url={videoUrl} playing={true} muted={true} />*/}
+      {/*<VideoBackground videoUrl={videoUrl} />*/}
       <video autoPlay muted loop preload="auto" className={'video'}>
         <source src={videoBg} />
       </video>
       {/*<VideoBackground />*/}
       <div className={'poster-container'}>
-        {isMobile ? (
-          <div className={'home-title'}>
-            <h5>The</h5>
-            <h1>Maestro</h1>
-            <span>Coming late 2023</span>
-          </div>
-        ) : (
-          <GlitchText />
-        )}
-        <Button text={'watch trailer'} />
+        {/*<div className={'home-title'}>*/}
+        {/*  <h5>The</h5>*/}
+        {/*  <h1>Maestro</h1>*/}
+        {/*  <span>Coming late 2023</span>*/}
+        {/*</div>*/}
+        <a href={'https://vimeo.com/user109067760/review/913360625/0f57eb2d22'}>
+          <Button text={'watch reel'} width={'250px'} />
+        </a>
       </div>
       <div className={'navbar-box'}>
         {/*<img src={tabbar} alt={'home-page-tabs'} className={'tabs-bar-home'} />*/}

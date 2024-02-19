@@ -1,11 +1,11 @@
+import React from 'react';
 import ReactPlayer from 'react-player';
-import videoBg from '../../assets/images/Hero_BG_Video_Alt (1) (1).mp4';
-import './style.scss';
-export const VideoBackground = () => {
+
+const VideoBackground = ({ videoUrl }) => {
   return (
     <div className="video-background">
       <ReactPlayer
-        url={videoBg}
+        url={videoUrl}
         playing
         loop
         muted
@@ -16,3 +16,5 @@ export const VideoBackground = () => {
     </div>
   );
 };
+
+export default VideoBackground;

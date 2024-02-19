@@ -29,26 +29,30 @@
     display: flex;
     box-sizing: border-box;
     height: 800px;
-    gap: 0 20px;
+    max-width: 1140px;
+    width: 100%;
+    gap: 0 10px;
     padding: 50px 0 50px 0;
+    justify-content: space-between;
     .film-card-wrapper{
       border-radius: 20px;
-      max-height: 650px;
-      flex: 1;
-      padding: 20px;
+      max-height: 600px;
+      width: 33.33%;
+      padding: 15px;
       box-sizing: border-box;
       transition: background-color 0.3s ease; /* Add a transition for background-color */
       transform: translateZ(0); /* Create a stacking context to isolate the hover effect */
       cursor: pointer;
       height: auto;
       &:hover {
-        max-height: 700px;
+        max-height: 620px;
         background-color: #1F1F1F; /* Adjust to your hover color */
       }
       .film-card {
         margin: 10px 0 20px;
-        width: 400px;
-        height: 570px;
+        width: 100%;
+        background-size: cover;
+        height: 500px;
         transition: opacity 0.3s ease; /* Add a transition for opacity */
         opacity: 1; /* Initially hide the content */
       }

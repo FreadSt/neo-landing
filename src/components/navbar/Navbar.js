@@ -39,7 +39,7 @@ export const Navbar = () => {
 
   return (
     <div className="navbar-wrapper" style={{ bottom: `${navbarHeight}vh` }}>
-      <img className="clip-top-left" src={clipleft} alt={'navbar-clip'} />
+      {/*<img className="clip-top-left" src={clipleft} alt={'navbar-clip'} />*/}
       <div className={'nav-inner-content'}>
         <div className="navigation-container">
           {NAVBAR_TABS.map((item, i) => {
@@ -58,7 +58,7 @@ export const Navbar = () => {
           })}
         </div>
       </div>
-      <img className="clip-bottom-right" src={clipright} alt={'navbar-clip-r'} />
+      {/*<img className="clip-bottom-right" src={clipright} alt={'navbar-clip-r'} />*/}
     </div>
   );
 };

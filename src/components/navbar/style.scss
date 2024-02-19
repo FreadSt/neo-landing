@@ -2,13 +2,17 @@
   display: flex;
   z-index: 22;
   position: fixed;
+  filter: blur(20%);
   .nav-inner-content{
-    padding: 10px 0;
+    border-radius: 10px;
+    padding: 10px 30px;
     box-sizing: border-box;
     align-items: center;
     display: flex;
     height: 40px;
-    background: rgba(250, 250, 250, 0.10);
+    background: rgba(250, 250, 250, 0.20);
+    //clip-path: polygon(3% 0, 100% 0, 100% 78%, 97% 100%, 0% 100%, 0 25%);
+    z-index: 222;
     .navigation-container{
       display: flex;
       .tab-btn{
