@@ -44,7 +44,7 @@
       bottom: 0;
       width: 100%;
       height: 100%;
-      background-color: #0E0E0EFF;
+      background-color: #000000;
       opacity: 1;
       transition: opacity 0.5s ease-in-out;
     }
@@ -73,33 +73,34 @@
 <body>
   <div id="root"></div>
   <div class="holder">
-    <p class="loader-text" id="loader">0</p>
-    <img src="neo_logo.svg" class="loader-img"/>
+    <img src="%PUBLIC_URL%/Preloader.gif"/>
+<!--    <p class="loader-text" id="loader">0</p>-->
+<!--    <img src="neo_logo.svg" class="loader-img"/>-->
   </div>
-  <script>
-    var progress = 0;
-    var interval = setInterval(function() {
-      progress += 1; // adjust this value to control the speed of the loader
-      var loaderText = '';
-      if (progress < 50) {
-        loaderText = '' + progress;
-      } else if (progress < 75) {
-        loaderText = ' ' + progress;
-      } else if (progress < 100) {
-        loaderText = ' ' + progress;
-      } else {
-        loaderText = ' ';
-      }
-      document.getElementById('loader').innerText = loaderText;
-      if (progress >= 100) {
-        clearInterval(interval);
-        document.querySelector(
-                ".holder").style.display = "none";
-        document.querySelector(
-                "body").style.visibility = "visible";
-      }
-    }, 100); // adjust this value to control the frequency of updates
-  </script>
+<!--  <script>-->
+<!--    var progress = 0;-->
+<!--    var interval = setInterval(function() {-->
+<!--      progress += 1; // adjust this value to control the speed of the loader-->
+<!--      var loaderText = '';-->
+<!--      if (progress < 50) {-->
+<!--        loaderText = '' + progress;-->
+<!--      } else if (progress < 75) {-->
+<!--        loaderText = ' ' + progress;-->
+<!--      } else if (progress < 100) {-->
+<!--        loaderText = ' ' + progress;-->
+<!--      } else {-->
+<!--        loaderText = ' ';-->
+<!--      }-->
+<!--      document.getElementById('loader').innerText = loaderText;-->
+<!--      if (progress >= 100) {-->
+<!--        clearInterval(interval);-->
+<!--        document.querySelector(-->
+<!--                ".holder").style.display = "none";-->
+<!--        document.querySelector(-->
+<!--                "body").style.visibility = "visible";-->
+<!--      }-->
+<!--    }, 100); // adjust this value to control the frequency of updates-->
+<!--  </script>-->
 </body>
 </html>
 
