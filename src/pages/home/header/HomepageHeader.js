@@ -4,13 +4,15 @@ import { Navbar } from '../../../components/navbar/Navbar';
 import downDots from '../../../assets/images/image 18.svg';
 import './style.scss';
 import Header from '../../../components/header/Header';
-import videoBg from '../../../assets/images/Hero_BG_Video_Alt (1).mp4';
+import videoBg from '../../../assets/images/Hero_BG_Video_Alt (1) (1).mp4';
 import { Button } from '../../../components/button/Button';
 import menuMobile from '../../../assets/images/sidebar-menu-mob.svg';
 import { useState } from 'react';
 import { MobMenu } from '../../../components/mobileMenu/MobMenu';
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import './glitch.css';
+import { VideoBackground } from '../../../components/videoPlayer/VideoBackground';
+import ReactPlayer from 'react-player';
 
 export const HomepageHeader = () => {
   const [isMobileMenuOpen, setIsMobMenuOpen] = useState(false);
@@ -40,8 +42,11 @@ export const HomepageHeader = () => {
   return (
     <div className={'homepage-header-box'}>
       <img src={upperDots} alt={'up-dots'} className={'up-dots'} />
-      <video src={videoBg} autoPlay loop className={'video'} />
       <Header />
+      <video autoPlay muted loop preload="auto" className={'video'}>
+        <source src={videoBg} />
+      </video>
+      {/*<VideoBackground />*/}
       <div className={'poster-container'}>
         {isMobile ? (
           <div className={'home-title'}>
@@ -53,15 +58,9 @@ export const HomepageHeader = () => {
           <GlitchText />
         )}
         <Button text={'watch trailer'} />
-        {/*<img*/}
-        {/*  src={homeBtn}*/}
-        {/*  alt={'home-button'}*/}
-        {/*  className={'homepage-btn'}*/}
-        {/*  style={{ cursor: 'pointer' }}*/}
-        {/*/>*/}
       </div>
       <div className={'navbar-box'}>
-        <img src={tabbar} alt={'home-page-tabs'} className={'tabs-bar-home'} />
+        {/*<img src={tabbar} alt={'home-page-tabs'} className={'tabs-bar-home'} />*/}
       </div>
       {isMobile ? (
         <img

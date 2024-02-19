@@ -43,7 +43,7 @@ export const Body = () => {
           <div className={'button-box'}>
             <img src={dots} alt={'hp-b-dots'} />
             <div className={'hr-line'} />
-            <Button text={'other news'} style={{ width: '189px' }} />
+            <Button text={'other news'} width={'210px'} />
           </div>
         </div>
         <div className={'hp-cards-body-box'}>

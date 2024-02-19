@@ -121,7 +121,7 @@ const Form = () => {
       <div className={'button-form-box'}>
         <img src={dots} alt={'dots-form'} className={'dots-form'} />
         <div className={'hr-line-form'} />
-        <Button text={'submit'} type={'submit'} style={{ width: '250px' }} />
+        <Button text={'submit'} type={'submit'} width={'210px'} />
       </div>
     </form>
   );

@@ -61,9 +61,15 @@
     align-items: center;
     margin-top: 30px;
     .hr-line-form{
-      width: 100%;
       height: 1px;
       background: var(--white);
+      width: -webkit-fill-available;
+    }
+    .btn-box{
+      width: 210px!important;
+      .btn-body{
+        width: 210px;
+      }
     }
   }
   label {
@@ -72,13 +78,16 @@
     color: var(--white);
   }
   textarea {
-    padding: 8px;
+    color: var(--white);
+    padding: 20px;
+    box-sizing: border-box;
   }
   .textarea-form{
     height: 180px;
     background: rgba(250, 250, 250, 0.10);
     resize: none;
     border: none;
+    clip-path: polygon(3% 0, 100% 0, 100% 92%, 97% 100%, 0% 100%, 0 7%);
   }
   button {
     background-color: #007bff;

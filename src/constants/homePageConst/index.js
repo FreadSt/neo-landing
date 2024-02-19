@@ -1,6 +1,6 @@
 import webArrow from '../../assets/images/navbar-arr.svg';
-import house from '../../assets/images/house-homepage.svg';
-import peoples from '../../assets/images/people-homepage.svg';
+import house from '../../assets/images/housepng.png';
+import peoples from '../../assets/images/peoplepng.png';
 import GlitchEffect from '../../components/glitch/GlitchComponent';
 export const NAVBAR_TABS = [
   {

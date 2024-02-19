@@ -23,21 +23,25 @@ const FilmDetails = () => {
         <Header />
         <div className={'title-details-box'}>
           <h2>{title}</h2>
-          <Button text={'watch trailer'} />
+          {/*<Button text={'watch trailer'} />*/}
         </div>
       </div>
       <div className={'movie-details-desc'}>
         <div className={'announcement'}>
           <span>release date</span>
           <h2>{date}</h2>
-          <span>created by </span>
-          <h2>{createdBy}</h2>
+          {/*<span>created by </span>*/}
+          {/*<h2>{createdBy}</h2>*/}
         </div>
         <div className={'desc-text'}>
-          <span>starring</span>
-          {starring.map((actor, index) => (
-            <h3 key={index}>{actor}</h3>
-          ))}
+          {starring && (
+            <>
+              <span>starring</span>
+              {starring.map((actor, index) => (
+                <h3 key={index}>{actor}</h3>
+              ))}
+            </>
+          )}
           <p>{movieDes}</p>
         </div>
       </div>

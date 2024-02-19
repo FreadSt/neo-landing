@@ -36,8 +36,12 @@ export const FooterCreds = () => {
       </div>
       <div className={'f-c-hr'} />
       <div className={'socials'}>
-        <img src={x} alt={'x-cred-footer'} />
-        <img src={discord} alt={'f-cred-discord'} />
+        <a href={'https://twitter.com/NeoFilmsNFT'}>
+          <img src={x} alt={'x-cred-footer'} />
+        </a>
+        <a href={'https://discord.com/invite/brMNhjGdTn'}>
+          <img src={discord} alt={'f-cred-discord'} />
+        </a>
       </div>
     </div>
   );
