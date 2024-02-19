@@ -28,8 +28,12 @@ const Header = () => {
         </div>
       )}
       <div className="header__social-wrapper">
-        <img src={x} alt="X" />
-        <img src={discord} alt="Discord" />
+        <a href={'https://twitter.com/NeoFilmsNFT '}>
+          <img src={x} alt="X" />
+        </a>
+        <a href={'https://discord.com/invite/brMNhjGdTndiscord'}>
+          <img src={discord} alt="Discord" />
+        </a>
       </div>
     </div>
   );

@@ -113,12 +113,14 @@
       }
       .home-title {
         h5 {
-          font-size: 24px;  // Adjust font size for smaller screens
+          font-size: 24px;
         }
-
         h1 {
-          font-size: 64px;  // Adjust font size for smaller screens
-          margin: 20px 0;   // Adjust margin for smaller screens
+          line-height: normal;
+          font-size: 52px;  // Adjust font size for smaller screens
+          margin: 20px 0;
+          letter-spacing: 8px;// Adjust font size for smaller screens
+          // Adjust margin for smaller screens
         }
 
         span {
