@@ -10,9 +10,8 @@ const NewsCard = ({ mark, date, title, img, buttonText, desc }) => {
           {mark && <span>{mark}</span>}
           <p className={'card-news-date'}>{date}</p>
         </div>
-        <h3 className={'card-title'}>{title}</h3>
         <p className={'desc-box'}>{desc}</p>
-        <Button text={buttonText} style={{ width: '100%' }} />
+        {/*<Button text={buttonText} style={{ width: '100%' }} />*/}
       </div>
     </div>
   );

@@ -134,7 +134,7 @@
           bottom: 15px;
           position: absolute;
           width: 320px;
-          height: 270px;
+          height: auto;
           background: var(--dark);
           display: flex;
           flex-direction: column;
@@ -159,6 +159,7 @@
             align-items: center;
             font-family: actay, "sans-serif";
             color: var(--white);
+            opacity: 0.5;
             text-transform: uppercase;
             .card-news-date{
               margin: 0;
@@ -177,6 +178,8 @@
 
 @media only screen and (max-width: 430px) {
   .hp-body-wrapper{
+    padding: 150px 15px;
+    box-sizing: border-box;
     .bg-wrapper{
       max-width: 430px;
       width: 100%;
