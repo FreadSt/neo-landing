@@ -101,6 +101,32 @@
 @media (max-width: 430px) {
   .homepage-header-box{
     .poster-container{
+      display: flex;
+      flex-direction: column;
+      max-width: 430px;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+      .home-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        h5 {
+          font-size: 24px;
+        }
+        h1 {
+          line-height: normal;
+          font-size: 50px;  // Adjust font size for smaller screens
+          margin: 0px 0;
+          letter-spacing: 8px;// Adjust font size for smaller screens
+          // Adjust margin for smaller screens
+        }
+
+        span {
+          font-size: 16px;  // Adjust font size for smaller screens
+        }
+      }
       .btn-box{
         max-width: 430px;
         width: 100%;
@@ -109,22 +135,6 @@
           .button-text{
             width: auto;
           }
-        }
-      }
-      .home-title {
-        h5 {
-          font-size: 24px;
-        }
-        h1 {
-          line-height: normal;
-          font-size: 52px;  // Adjust font size for smaller screens
-          margin: 20px 0;
-          letter-spacing: 8px;// Adjust font size for smaller screens
-          // Adjust margin for smaller screens
-        }
-
-        span {
-          font-size: 16px;  // Adjust font size for smaller screens
         }
       }
     }

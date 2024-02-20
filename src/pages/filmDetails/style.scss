@@ -58,6 +58,7 @@
         opacity: 0.7;
         font-family: actay, "sans-serif";
         font-size: 16px;
+        text-transform: uppercase;
       }
       h2{
         font-size: 36px;
@@ -109,6 +110,11 @@
     .movie-details-desc{
       flex-direction: column;
       height: 100%;
+      width: 100%;
+      .desc-text{
+        display: flex;
+        width: 100%;
+      }
     }
   }
 }
