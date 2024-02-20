@@ -117,8 +117,8 @@
         }
         h1 {
           line-height: normal;
-          font-size: 50px;  // Adjust font size for smaller screens
-          margin: 0px 0;
+          font-size: 40px;  // Adjust font size for smaller screens
+          margin: 0 0;
           letter-spacing: 8px;// Adjust font size for smaller screens
           // Adjust margin for smaller screens
         }
@@ -146,11 +146,16 @@
         margin: 0;
       }
     }
-    .sidebar-mob-btn{
-      position: absolute;
+    .menu-mob-wrapper{
+      position: fixed;
       z-index: 2;
       right: 7vw;
       bottom: 10vh;
+      backdrop-filter: blur(20px);
+      padding: 20px;
+      box-sizing: border-box;
+      background: rgba(250, 250, 250, 0.20);
+      border-radius: 10px;
     }
   }
   .video {

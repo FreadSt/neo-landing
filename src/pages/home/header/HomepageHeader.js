@@ -6,7 +6,7 @@ import './style.scss';
 import Header from '../../../components/header/Header';
 import videoBg from '../../../assets/images/HeroVid10 (1).mp4';
 import { Button } from '../../../components/button/Button';
-import menuMobile from '../../../assets/images/sidebar-menu-mob.svg';
+import menuMobile from '../../../assets/images/burger-menu.svg';
 import { useState } from 'react';
 import { MobMenu } from '../../../components/mobileMenu/MobMenu';
 import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
@@ -53,25 +53,40 @@ export const HomepageHeader = () => {
         <source src={videoBg} />
       </video>
       {/*<VideoBackground />*/}
-      <div className={'poster-container'}>
-        <div className={'home-title'}>
-          <h1>The Future</h1>
-          <h1>Of Filmmaking</h1>
+      {isMobile ? (
+        <div className={'poster-container'}>
+          <div className={'home-title'}>
+            <h1>The</h1>
+            <h1>Future Of</h1>
+            <h1>Filmmaking</h1>
+          </div>
+          <a href={'https://vimeo.com/user109067760/review/913360625/0f57eb2d22'}>
+            <Button text={'watch reel'} width={'250px'} />
+          </a>
         </div>
-        <a href={'https://vimeo.com/user109067760/review/913360625/0f57eb2d22'}>
-          <Button text={'watch reel'} width={'250px'} />
-        </a>
-      </div>
+      ) : (
+        <div className={'poster-container'}>
+          <div className={'home-title'}>
+            <h1>The Future</h1>
+            <h1>Of Filmmaking</h1>
+          </div>
+          <a href={'https://vimeo.com/user109067760/review/913360625/0f57eb2d22'}>
+            <Button text={'watch reel'} width={'250px'} />
+          </a>
+        </div>
+      )}
       <div className={'navbar-box'}>
         {/*<img src={tabbar} alt={'home-page-tabs'} className={'tabs-bar-home'} />*/}
       </div>
       {isMobile ? (
-        <img
-          src={menuMobile}
-          className={'sidebar-mob-btn'}
-          onClick={handleOpenMobMenu}
-          alt={'menuMob-hp'}
-        />
+        <div className={'menu-mob-wrapper'}>
+          <img
+            src={menuMobile}
+            className={'sidebar-mob-btn'}
+            onClick={handleOpenMobMenu}
+            alt={'menuMob-hp'}
+          />
+        </div>
       ) : (
         <Navbar />
       )}
