@@ -4,7 +4,7 @@ import { Navbar } from '../../../components/navbar/Navbar';
 import downDots from '../../../assets/images/image 18.svg';
 import './style.scss';
 import Header from '../../../components/header/Header';
-import videoBg from '../../../assets/images/HeroVid10.mp4';
+import videoBg from '../../../assets/images/HeroVid10 (1).mp4';
 import { Button } from '../../../components/button/Button';
 import menuMobile from '../../../assets/images/sidebar-menu-mob.svg';
 import { useState } from 'react';
