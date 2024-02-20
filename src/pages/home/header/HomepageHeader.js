@@ -47,20 +47,9 @@ export const HomepageHeader = () => {
     <div className={'homepage-header-box'}>
       <img src={upperDots} alt={'up-dots'} className={'up-dots'} />
       <Header />
-      {isMobile ? (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `<video className="app__backgroundVideo" autoplay loop muted>
-                          <source src=${videoBg} type="video/mp4" />
-                          Your browser does not support the video tag.
-                    </video>`,
-          }}
-        />
-      ) : (
-        <video autoPlay muted loop preload={!isMobile && 'auto'} className={'video'}>
-          <source src={videoBg} />
-        </video>
-      )}
+      <video autoPlay muted loop preload={!isMobile && 'auto'} className={'video'}>
+        <source src={videoBg} />
+      </video>
       {isMobile ? (
         <div className={'poster-container'}>
           <div className={'home-title'}>

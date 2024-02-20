@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.scss';
 import dropArrow from '../../assets/images/arrow-dropdown.svg';
 
-const CustomDropdown = ({ options, value, onChange }) => {
+const CustomDropdown = ({ options, value, onChange, name }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (optionValue) => {
@@ -11,7 +11,7 @@ const CustomDropdown = ({ options, value, onChange }) => {
   };
 
   return (
-    <div className="custom-dropdown">
+    <div className="custom-dropdown" name={name}>
       <div className={`selected-option ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
         {value || '50-100k'}
         <img src={dropArrow} alt={'drop-arr'} />
