@@ -49,7 +49,7 @@ export const HomepageHeader = () => {
       <Header />
       {/*<ReactPlayer url={videoUrl} playing={true} muted={true} />*/}
       {/*<VideoBackground videoUrl={videoUrl} />*/}
-      <video autoPlay muted loop preload="auto" className={'video'}>
+      <video autoPlay muted loop preload={!isMobile && 'auto'} className={'video'}>
         <source src={videoBg} />
       </video>
       {/*<VideoBackground />*/}
