@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const FilmCards = ({ img, title, date, backgroundStatic, backgroundHover, buttonText, path }) => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const isMobile = window.innerWidth <= 430;
   const navigate = useNavigate();
 
   const handleMouseEnter = () => {
@@ -31,15 +31,19 @@ const FilmCards = ({ img, title, date, backgroundStatic, backgroundHover, button
         <p>{title}</p>
         <p>{date}</p>
       </div>
-      <div
-        className={'film-card'}
-        style={{
-          backgroundImage: `url(${img})`,
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        }}
-      />
+      {isMobile ? (
+        <img src={img} alt={'img-mob'} className={'mobile-card-img'} />
+      ) : (
+        <div
+          className={'film-card'}
+          style={{
+            backgroundImage: `url(${img})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
+        />
+      )}
       {isHovered && (
         <Button text={buttonText} style={{ width: '150px' }} onClick={navigateToDetails} />
       )}

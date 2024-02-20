@@ -1,8 +1,11 @@
 import human from '../../../assets/images/business-products-cash-user-man-message-49.svg';
 import './style.scss';
 import bottomLine from '../../../assets/images/footer-hp-placeholder.svg';
+import lowerMobLine from '../../../assets/images/bot-body-mob-stroke.png';
+
 import Form from '../../../components/form/Form';
 export const FooterHomepage = () => {
+  const isMobile = window.innerWidth <= 430;
   return (
     <div className={'f-hp-form-description'}>
       <div className={'footer-form-container'}>
@@ -24,7 +27,11 @@ export const FooterHomepage = () => {
           <Form />
         </div>
       </div>
-      <img src={bottomLine} alt={'footer-hp-bot-line'} className={'linear-f-bg-bottom'} />
+      {isMobile ? (
+        <img src={lowerMobLine} alt={'footer-mob-bot-line'} className={'linear-f-bg-bottom'} />
+      ) : (
+        <img src={bottomLine} alt={'footer-hp-bot-line'} className={'linear-f-bg-bottom'} />
+      )}
     </div>
   );
 };
