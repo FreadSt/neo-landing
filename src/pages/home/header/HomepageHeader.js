@@ -14,6 +14,19 @@ import './glitch.css';
 import ReactPlayer from 'react-player';
 import VideoBackground from '../../../components/videoPlayer/VideoBackground';
 import { useNavigate } from 'react-router-dom';
+import AutoPlayVideo from './AutoPlayVideo';
+import AutoplayVideoComponent from './AutoPlayVideo';
+
+const AutoPlay = () => (
+  <div
+    dangerouslySetInnerHTML={{
+      __html: `
+    <video autoPlay muted loop preload='auto' className={'video'}>
+          <source src={videoBg} />
+        </video>`,
+    }}
+  />
+);
 
 export const HomepageHeader = () => {
   const [isMobileMenuOpen, setIsMobMenuOpen] = useState(false);
@@ -47,7 +60,13 @@ export const HomepageHeader = () => {
     <div className={'homepage-header-box'}>
       <img src={upperDots} alt={'up-dots'} className={'up-dots'} />
       <Header />
-      <video autoPlay muted loop preload={!isMobile && 'auto'} className={'video'}>
+      <video
+        autoPlay
+        playsInline={true}
+        muted
+        loop
+        preload={!isMobile && 'auto'}
+        className={'video'}>
         <source src={videoBg} />
       </video>
       {isMobile ? (

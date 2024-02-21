@@ -83,6 +83,11 @@ export const Body = () => {
               glitchEffect={card.glitchEffect}
             />
           ))}
+          {isMobile && (
+            <div className={'btn-mob-wrapper'}>
+              <Button text={'more news'} width={'100%'} />
+            </div>
+          )}
         </div>
       </div>
       {isMobile ? (
