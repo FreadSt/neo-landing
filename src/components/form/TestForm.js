@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './style.scss';
 import { Button } from '../button/Button';
 import dots from '../../assets/images/thripleDots.svg';
@@ -14,8 +14,7 @@ const Form = () => {
   const [userBestMovie, setUserBestMovie] = useState({ value: '', error: '' });
   const [selectedBudget, setSelectedBudget] = useState('50-100k'); // Step 1
   const [userConcept, setUserConcept] = useState({ value: '', error: '' });
-  const [isBtnPressed, setIsBtnPressed] = useState(null);
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const [isFilled, setIsFilled] = useState(false);
 
   const form = useRef();
@@ -41,19 +40,19 @@ const Form = () => {
       budget: selectedBudget,
     };
     if (!userCredentials.username) {
-      setUserName({ value: '', error: 'Email is require' });
+      setUserName({ value: '', error: 'Name is require' });
       isError = true;
     }
     if (!userCredentials.discordName) {
-      setUserDiscord({ value: '', error: 'Please, enter a password' });
+      setUserDiscord({ value: '', error: 'Please, enter a discord' });
       isError = true;
     }
     if (!userCredentials.userMovie) {
-      setUserBestMovie({ value: '', error: 'Please, enter a password' });
+      setUserBestMovie({ value: '', error: 'Tell us your favourite movie' });
       isError = true;
     }
     if (!userCredentials.concept) {
-      setUserDiscord({ value: '', error: 'Please, enter a password' });
+      setUserConcept({ value: '', error: 'Please, concept need' });
       isError = true;
     }
     if (!isError) {
@@ -61,7 +60,7 @@ const Form = () => {
       setUserDiscord({ value: '', error: '' });
       setUserBestMovie({ value: '', error: '' });
       setUserConcept({ value: '', error: '' });
-      setIsSubmit(true);
+      setSelectedBudget(selectedBudget);
       try {
         console.log('The email is valid');
         emailjs
@@ -69,17 +68,16 @@ const Form = () => {
           .then(
             (result) => {
               console.log(result.text);
+              setSuccessMessage('Form submitted successfully!');
             },
             (error) => {
               console.log(error.text);
             },
           );
-        setIsSubmit(true);
       } catch (err) {
         console.error(err);
       }
     }
-    console.log(isError, 'error');
   };
 
   const handleChangeName = (e) => {
@@ -98,9 +96,6 @@ const Form = () => {
     setUserConcept({ value: e.target.value, error: '' });
     setIsFilled(true);
   };
-  const handleClickSubmit = (e) => {
-    setIsBtnPressed((prev) => !prev);
-  };
   return (
     <form className="form-container" ref={form} onSubmit={handleSubmit}>
       <div className={'inputs-container'}>
@@ -118,6 +113,7 @@ const Form = () => {
             />
             <img src={clipright} alt={'inp-clip-r'} />
           </div>
+          {userName.error && <span className="error-message">{userName.error}</span>}
         </div>
         <div className={'discord-address'}>
           <label htmlFor="input2">Your Discord?</label>
@@ -133,6 +129,7 @@ const Form = () => {
             />
             <img src={clipright} alt={'inp-clip-r'} />
           </div>
+          {userDiscord.error && <span className="error-message">{userDiscord.error}</span>}
         </div>
         <div className={'project-name'}>
           <label htmlFor="best_movie">Project name</label>
@@ -148,13 +145,14 @@ const Form = () => {
             />
             <img src={clipright} alt={'inp-clip-r'} />
           </div>
+          {userBestMovie.error && <span className="error-message">{userBestMovie.error}</span>}
         </div>
         <div className={'budget-box'}>
           <label htmlFor={'custom-dropdown'}>Budget</label>
           <div className={'btn-wrapper'}>
             <img src={clipleft} alt={'inp-clip-l'} />
             <CustomDropdown
-              name={'budget'}
+              name="budget"
               options={options}
               value={selectedBudget}
               onChange={handleDropdownChange}
@@ -176,18 +174,16 @@ const Form = () => {
         // value={formData.concept}
         // onChange={handleChange}
       ></textarea>
+      {userConcept.error && <span className="error-message">{userConcept.error}</span>}
       <div className={'button-form-box'}>
         <img src={dots} alt={'dots-form'} className={'dots-form'} />
         <div className={'hr-line-form'} />
-        <button type="submit" className={'submit-btn'} onClick={handleClickSubmit}>
+        <button type="submit" className={'submit-btn'}>
           <img src={bgBorder} alt={'bg-form-btn-border'} className={'background-btn-form'} />
           <span>submit</span>
         </button>
       </div>
-      {isBtnPressed && !isFilled && <span className={'error-span'}>FILL ALL FIELDS PLEASE</span>}
-      {isBtnPressed && isFilled && (
-        <span className={'submit-span'}>Great! We&apos;ll contact you.</span>
-      )}
+      {successMessage && <span className={'success-message'}>{successMessage}</span>}
     </form>
   );
 };
