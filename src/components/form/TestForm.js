@@ -9,59 +9,59 @@ import emailjs from '@emailjs/browser';
 import bgBorder from '../../assets/images/buttonSvg.svg';
 
 const Form = () => {
-  const [formData, setFormData] = useState({
-    user_name: '',
-    discord_name: '',
-    best_movie: '',
-    budget: '',
-    concept: '',
-  });
-  const [validation, setValidation] = useState({
-    user_name: null,
-    discord_name: null,
-    best_movie: null,
-    budget: null,
-    concept: null,
-  });
+  const [userName, setUserName] = useState({ value: '', error: '' });
+  const [userDiscord, setUserDiscord] = useState({ value: '', error: '' });
+  const [userBestMovie, setUserBestMovie] = useState({ value: '', error: '' });
+  const [selectedBudget, setSelectedBudget] = useState('50-100k'); // Step 1
+  const [userConcept, setUserConcept] = useState({ value: '', error: '' });
+  const [isBtnPressed, setIsBtnPressed] = useState(null);
   const [isSubmit, setIsSubmit] = useState(false);
-  const [isError, setError] = useState(null);
+  const [isFilled, setIsFilled] = useState(false);
+
+  const form = useRef();
+
   const options = [
+    { value: '50-100k', label: '50-100k' },
     { value: '150-250k', label: '150-250k' },
     { value: '250-500k', label: '250-500k' },
     { value: '500+k', label: '500+k' },
   ];
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    setValidation({
-      ...validation,
-      [name]: true,
-    });
+  const handleDropdownChange = (selectedValue) => {
+    setSelectedBudget(selectedValue); // Step 2
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    let isValid = true;
-
-    // Check if any field is empty
-    Object.keys(formData).forEach((key) => {
-      if (formData[key].trim() === '') {
-        setValidation((prevValidation) => ({
-          ...prevValidation,
-          [key]: false,
-        }));
-        isValid = false;
-      } else if (!isValid) {
-        setError('Fill all fields please');
-        setIsSubmit(false);
-      }
-    });
-
-    if (isValid) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let isError = false;
+    const userCredentials = {
+      username: userName.value,
+      discordName: userDiscord.value,
+      userMovie: userBestMovie.value,
+      concept: userConcept.value,
+      budget: selectedBudget,
+    };
+    if (!userCredentials.username) {
+      setUserName({ value: '', error: 'Email is require' });
+      isError = true;
+    }
+    if (!userCredentials.discordName) {
+      setUserDiscord({ value: '', error: 'Please, enter a password' });
+      isError = true;
+    }
+    if (!userCredentials.userMovie) {
+      setUserBestMovie({ value: '', error: 'Please, enter a password' });
+      isError = true;
+    }
+    if (!userCredentials.concept) {
+      setUserDiscord({ value: '', error: 'Please, enter a password' });
+      isError = true;
+    }
+    if (!isError) {
+      setUserName({ value: '', error: '' });
+      setUserDiscord({ value: '', error: '' });
+      setUserBestMovie({ value: '', error: '' });
+      setUserConcept({ value: '', error: '' });
+      setIsSubmit(true);
       try {
         console.log('The email is valid');
         emailjs
@@ -76,36 +76,33 @@ const Form = () => {
           );
         setIsSubmit(true);
       } catch (err) {
-        setError('Request Error! Try again later');
         console.error(err);
       }
     }
+    console.log(isError, 'error');
   };
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   setError(null);
-  //   try {
-  //     console.log('The email is valid');
-  //     emailjs
-  //       .sendForm('service_yfracbb', 'template_hjypvh8', form.current, 'Z9T9c4TGtpcAEIrXq')
-  //       .then(
-  //         (result) => {
-  //           console.log(result.text);
-  //         },
-  //         (error) => {
-  //           console.log(error.text);
-  //         },
-  //       );
-  //     setIsSubmit(true);
-  //   } catch (err) {
-  //     setError(err);
-  //   }
-  // };
-  const form = useRef();
-  console.log(isError, 'isError');
-  console.log(isSubmit, 'isSubmit');
+
+  const handleChangeName = (e) => {
+    setUserName({ value: e.target.value, error: '' });
+    setIsFilled(true);
+  };
+  const handleChangeDiscord = (e) => {
+    setUserDiscord({ value: e.target.value, error: '' });
+    setIsFilled(true);
+  };
+  const handleChangeMovie = (e) => {
+    setUserBestMovie({ value: e.target.value, error: '' });
+    setIsFilled(true);
+  };
+  const handleChangeConcept = (e) => {
+    setUserConcept({ value: e.target.value, error: '' });
+    setIsFilled(true);
+  };
+  const handleClickSubmit = (e) => {
+    setIsBtnPressed((prev) => !prev);
+  };
   return (
-    <form className="form-container" onSubmit={handleSubmit} ref={form}>
+    <form className="form-container" ref={form} onSubmit={handleSubmit}>
       <div className={'inputs-container'}>
         <div className={'name-box'}>
           <label htmlFor="user_name">How should we call you?</label>
@@ -116,8 +113,8 @@ const Form = () => {
               placeholder={'Dave?'}
               id="input1"
               name={'user_name'}
-              value={formData.user_name}
-              onChange={handleChange}
+              value={userName.value}
+              onChange={handleChangeName}
             />
             <img src={clipright} alt={'inp-clip-r'} />
           </div>
@@ -131,8 +128,8 @@ const Form = () => {
               type="text"
               id="input2"
               name="discord_name"
-              value={formData.discord_name}
-              onChange={handleChange}
+              value={userDiscord.value}
+              onChange={handleChangeDiscord}
             />
             <img src={clipright} alt={'inp-clip-r'} />
           </div>
@@ -146,8 +143,8 @@ const Form = () => {
               type="text"
               id="input3"
               name="best_movie"
-              value={formData.best_movie}
-              onChange={handleChange}
+              onChange={handleChangeMovie}
+              value={userBestMovie.value}
             />
             <img src={clipright} alt={'inp-clip-r'} />
           </div>
@@ -159,8 +156,8 @@ const Form = () => {
             <CustomDropdown
               name={'budget'}
               options={options}
-              value={formData.budget}
-              onChange={(value) => handleChange({ target: { name: 'budget', value } })}
+              value={selectedBudget}
+              onChange={handleDropdownChange}
             />
             <img src={clipright} alt={'inp-clip-r'} />
           </div>
@@ -174,17 +171,23 @@ const Form = () => {
         placeholder={'It all starts far far away...'}
         id="textarea"
         name="concept"
-        value={formData.concept}
-        onChange={handleChange}></textarea>
+        value={userConcept.value}
+        onChange={handleChangeConcept}
+        // value={formData.concept}
+        // onChange={handleChange}
+      ></textarea>
       <div className={'button-form-box'}>
         <img src={dots} alt={'dots-form'} className={'dots-form'} />
         <div className={'hr-line-form'} />
-        <button type="submit" className={'submit-btn'} onClick={handleSubmit}>
+        <button type="submit" className={'submit-btn'} onClick={handleClickSubmit}>
           <img src={bgBorder} alt={'bg-form-btn-border'} className={'background-btn-form'} />
           <span>submit</span>
         </button>
       </div>
-      {isError && <span>{isError}</span>}
+      {isBtnPressed && !isFilled && <span className={'error-span'}>FILL ALL FIELDS PLEASE</span>}
+      {isBtnPressed && isFilled && (
+        <span className={'submit-span'}>Great! We&apos;ll contact you.</span>
+      )}
     </form>
   );
 };

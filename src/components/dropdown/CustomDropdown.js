@@ -6,12 +6,12 @@ const CustomDropdown = ({ options, value, onChange, name }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (optionValue) => {
-    onChange(optionValue);
+    onChange(optionValue); // Call the onChange callback
     setIsOpen(false);
   };
 
   return (
-    <div className="custom-dropdown" name={name}>
+    <div className="custom-dropdown">
       <div className={`selected-option ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
         {value || '50-100k'}
         <img src={dropArrow} alt={'drop-arr'} />

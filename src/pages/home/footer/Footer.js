@@ -4,6 +4,7 @@ import bottomLine from '../../../assets/images/footer-hp-placeholder.svg';
 import lowerMobLine from '../../../assets/images/bot-body-mob-stroke.png';
 
 import Form from '../../../components/form/Form';
+import TestForm from '../../../components/form/TestForm';
 export const FooterHomepage = () => {
   const isMobile = window.innerWidth <= 430;
   return (
@@ -24,7 +25,7 @@ export const FooterHomepage = () => {
           </p>
         </div>
         <div className={'form-box'}>
-          <Form />
+          <TestForm />
         </div>
       </div>
       {isMobile ? (
