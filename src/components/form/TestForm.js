@@ -16,9 +16,8 @@ const Form = () => {
   const [userBestMovie, setUserBestMovie] = useState({ value: '', error: '' });
   const [selectedBudget, setSelectedBudget] = useState('50-100k');
   const [userConcept, setUserConcept] = useState({ value: '', error: '' });
-  const [successMessage, setSuccessMessage] = useState('');
-  const [isBtnPressed, setIsBtnPressed] = useState(null);
-  const [isSubmit, setIsSubmit] = useState(null);
+  const [isBtnPressed, setIsBtnPressed] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [showSuccessSneaker, setShowSuccessSneaker] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
@@ -88,31 +87,13 @@ const Form = () => {
         console.log('The email is valid');
         emailjs
           .sendForm('service_yfracbb', 'template_hjypvh8', form.current, 'Z9T9c4TGtpcAEIrXq')
-          .then(
-            (result) => {
-              console.log(result.text);
-              setSuccessMessage('Form submitted successfully!');
-              setIsSubmit(true);
-              setTimeout(() => {
-                setIsSubmit(null);
-                setSuccessMessage('');
-              }, 3000);
-            },
-            (error) => {
-              console.log(error.text);
-            },
-          );
-        setIsSubmit(true);
-        setTimeout(() => {
-          setIsSubmit(null);
-          setSuccessMessage('');
-        }, 3000);
+          .then((result) => {
+            console.log(result.text);
+            setIsSubmit(true);
+          });
       } catch (err) {
         console.error(err);
         setIsSubmit(false);
-        setTimeout(() => {
-          setIsSubmit(null);
-        }, 3000);
       }
     }
   };
@@ -225,7 +206,6 @@ const Form = () => {
         </button>
       </div>
       {showSuccessSneaker && (
-        // <div className={`success ${showSuccessSneaker ? 'fade-in' : 'fade-out'}`}>
         <div className={`success ${fadeOut ? 'fade-out' : 'fade-in'}`}>
           <img src={successImg} alt={'success-img'} />
           <p>

@@ -126,7 +126,8 @@
     align-items: center;
     position: fixed;
     top: 3vh;
-    right: 33%;
+    right: 37.2%;
+    width: 433px;
     background: #00FF84;
     border-radius: 10px;
     padding: 20px 30px 20px 20px;
@@ -268,8 +269,9 @@
       }
     }
     .success{
+      max-width: 390px;
       right: auto;
-      left: 9%;
+      left: 4.6%;
     }
   }
 }
