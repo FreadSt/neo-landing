@@ -2,7 +2,7 @@ import './style.scss';
 import dotsTop from '../../../assets/images/image 16.svg';
 import topLine from '../../../assets/images/homepageline.svg';
 import topMobileLine from '../../../assets/images/mob-up-hr.svg';
-import botMobLine from '../../../assets/images/mob-bot-hr-body.svg';
+import botMobLine from '../../../assets/images/Divider_Mobile.png';
 import botLine from '../../../assets/images/homepagesec_line.svg';
 import hand from '../../../assets/images/hand-love-sign-15.svg';
 import dots from '../../../assets/images/thripleDots.svg';

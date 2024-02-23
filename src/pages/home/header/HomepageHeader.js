@@ -106,7 +106,7 @@ export const HomepageHeader = () => {
       ) : (
         <Navbar />
       )}
-      {isMobileMenuOpen && <MobMenu onClose={handleOpenMobMenu} />}
+      {isMobileMenuOpen && <MobMenu onClose={handleOpenMobMenu} isOpen={isMobileMenuOpen} />}
       <img src={downDots} alt={'up-dots'} className={'down-dots'} />
       {/*<div className={'linear-bg'} />*/}
     </div>

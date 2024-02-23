@@ -7,15 +7,34 @@ import clipleft from '../../assets/images/clipleft.svg';
 import clipright from '../../assets/images/clipright.svg';
 import emailjs from '@emailjs/browser';
 import bgBorder from '../../assets/images/buttonSvg.svg';
+import successImg from '../../assets/images/success.svg';
+import errimg from '../../assets/images/submit-error.svg';
 
 const Form = () => {
   const [userName, setUserName] = useState({ value: '', error: '' });
   const [userDiscord, setUserDiscord] = useState({ value: '', error: '' });
   const [userBestMovie, setUserBestMovie] = useState({ value: '', error: '' });
-  const [selectedBudget, setSelectedBudget] = useState('50-100k'); // Step 1
+  const [selectedBudget, setSelectedBudget] = useState('50-100k');
   const [userConcept, setUserConcept] = useState({ value: '', error: '' });
   const [successMessage, setSuccessMessage] = useState('');
+  const [isBtnPressed, setIsBtnPressed] = useState(null);
+  const [isSubmit, setIsSubmit] = useState(null);
   const [isFilled, setIsFilled] = useState(false);
+  const [showSuccessSneaker, setShowSuccessSneaker] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    if (isSubmit && isBtnPressed && isFilled) {
+      setShowSuccessSneaker(true);
+      setTimeout(() => {
+        setFadeOut(true);
+        setTimeout(() => {
+          setShowSuccessSneaker(false);
+          setFadeOut(false);
+        }, 1000); // Adjust the duration to match your animation duration
+      }, 2000);
+    }
+  }, [isSubmit, isBtnPressed, isFilled]);
 
   const form = useRef();
 
@@ -27,6 +46,10 @@ const Form = () => {
   ];
   const handleDropdownChange = (selectedValue) => {
     setSelectedBudget(selectedValue); // Step 2
+  };
+
+  const handleBtnPressed = () => {
+    setIsBtnPressed(true);
   };
 
   const handleSubmit = (e) => {
@@ -69,17 +92,30 @@ const Form = () => {
             (result) => {
               console.log(result.text);
               setSuccessMessage('Form submitted successfully!');
+              setIsSubmit(true);
+              setTimeout(() => {
+                setIsSubmit(null);
+                setSuccessMessage('');
+              }, 3000);
             },
             (error) => {
               console.log(error.text);
             },
           );
+        setIsSubmit(true);
+        setTimeout(() => {
+          setIsSubmit(null);
+          setSuccessMessage('');
+        }, 3000);
       } catch (err) {
         console.error(err);
+        setIsSubmit(false);
+        setTimeout(() => {
+          setIsSubmit(null);
+        }, 3000);
       }
     }
   };
-
   const handleChangeName = (e) => {
     setUserName({ value: e.target.value, error: '' });
     setIsFilled(true);
@@ -96,6 +132,7 @@ const Form = () => {
     setUserConcept({ value: e.target.value, error: '' });
     setIsFilled(true);
   };
+  console.log(isBtnPressed, 'isBtnPressed');
   return (
     <form className="form-container" ref={form} onSubmit={handleSubmit}>
       <div className={'inputs-container'}>
@@ -178,12 +215,24 @@ const Form = () => {
       <div className={'button-form-box'}>
         <img src={dots} alt={'dots-form'} className={'dots-form'} />
         <div className={'hr-line-form'} />
-        <button type="submit" className={'submit-btn'}>
+        <button
+          type="submit"
+          className={'submit-btn'}
+          onClick={handleBtnPressed}
+          disabled={!isFilled}>
           <img src={bgBorder} alt={'bg-form-btn-border'} className={'background-btn-form'} />
           <span>submit</span>
         </button>
       </div>
-      {successMessage && <span className={'success-message'}>{successMessage}</span>}
+      {showSuccessSneaker && (
+        // <div className={`success ${showSuccessSneaker ? 'fade-in' : 'fade-out'}`}>
+        <div className={`success ${fadeOut ? 'fade-out' : 'fade-in'}`}>
+          <img src={successImg} alt={'success-img'} />
+          <p>
+            All done! <br /> Your idea submitted successfully!
+          </p>
+        </div>
+      )}
     </form>
   );
 };

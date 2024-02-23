@@ -2,13 +2,31 @@ import xmark from '../../assets/images/side-menu-x.svg';
 import './style.scss';
 import { NAVBAR_TABS } from '../../constants/homePageConst';
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export const MobMenu = ({ onClose }) => {
+export const MobMenu = ({ onClose, isOpen }) => {
   const location = useLocation();
   const [initialActive, setInitialActive] = useState(location.pathname);
+  const [closing, setClosing] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      // If the menu is closing, add a delay to allow the animation to complete before resetting initialActive
+      setClosing(true);
+      setTimeout(() => {
+        setClosing(false);
+        setInitialActive(location.pathname);
+      }, 300); // Adjust the duration to match the animation duration
+    }
+  }, [isOpen, location.pathname]);
+
+  const menuClassName = isOpen
+    ? 'mob-menu-wrapper menu-slide-in'
+    : closing
+      ? 'mob-menu-wrapper menu-slide-out'
+      : 'mob-menu-wrapper';
   return (
-    <div className={'mob-menu-wrapper'}>
+    <div className={menuClassName}>
       <img src={xmark} alt={'xmark-mob'} onClick={onClose} className={'xmark'} />
       <div className={'nav-tabs-mobile'}>
         {NAVBAR_TABS.map((item, i) => {

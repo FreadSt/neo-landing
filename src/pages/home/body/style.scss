@@ -171,6 +171,7 @@
         .neo-body-text{
           display: flex;
           flex-direction: column;
+          gap: 0;
           .neo-description{
             gap: 30px;
             span{
@@ -179,6 +180,7 @@
             .mob-text-wrapper{
               display: flex;
               justify-content: space-between;
+              margin: 30px 0;
               .mob-text-box{
                 p{
                   font-family: actay_wide, "sans-serif";
@@ -203,7 +205,7 @@
     .main-hp-body-title{
       max-width: 430px;
       width: 100%;
-      padding: 0 20px;
+      padding: 0;
       box-sizing: border-box;
       .box-title-name{
         max-width: 430px;
@@ -230,7 +232,6 @@
           flex-direction: column;
           align-items: center;
           .background-news-img{
-            max-width: 350px;
             width: 100%;
           }
           .news-content{
@@ -249,7 +250,7 @@
           }
         }
         .btn-mob-wrapper{
-          background: url("../../../assets/images/buttonSvg.svg") center no-repeat;
+          //background: url("../../../assets/images/buttonSvg.svg") center no-repeat;
           background-size: cover;
           height: 15px;
           padding: 20px 0;
@@ -260,7 +261,6 @@
           .btn-box{
             width: 100%;
             .button-border{
-              display: none;
             }
             .btn-body{
               .arr-mob{

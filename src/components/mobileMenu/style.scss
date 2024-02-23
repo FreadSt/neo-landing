@@ -60,3 +60,29 @@
     }
   }
 }
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.menu-slide-in {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.menu-slide-out {
+  animation: slideOutToRight 0.3s ease-out;
+}

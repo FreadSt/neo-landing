@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import play from '../../assets/images/play-mob.svg';
 import './glitch.scss';
 import bgBorder from '../../assets/images/buttonSvg.svg';
+import BTN_mob from '../../assets/images/BTN_Mobile.svg';
 export const Button = ({ text, style, onClick, width }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 430);
 
@@ -22,7 +23,7 @@ export const Button = ({ text, style, onClick, width }) => {
 
   return (
     <div className={'btn-box'} onClick={onClick} style={{ width: width }}>
-      <img src={bgBorder} className={'button-border'} />
+      <img src={!isMobile ? bgBorder : BTN_mob} className={'button-border'} />
       {/*<img src={clipleft} alt={'btn-clip-left'} />*/}
       <div className={'btn-body'} style={style}>
         {isMobile ? (

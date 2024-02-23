@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 import './style.scss';
-import { Button } from '../button/Button';
 import dots from '../../assets/images/thripleDots.svg';
 import CustomDropdown from '../dropdown/CustomDropdown';
 import clipleft from '../../assets/images/clipleft.svg';
 import clipright from '../../assets/images/clipright.svg';
 import emailjs from '@emailjs/browser';
 import bgBorder from '../../assets/images/buttonSvg.svg';
+import successImg from '../../assets/images/success.svg';
+import errimg from '../../assets/images/submit-error.svg';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -81,26 +82,6 @@ const Form = () => {
       }
     }
   };
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   setError(null);
-  //   try {
-  //     console.log('The email is valid');
-  //     emailjs
-  //       .sendForm('service_yfracbb', 'template_hjypvh8', form.current, 'Z9T9c4TGtpcAEIrXq')
-  //       .then(
-  //         (result) => {
-  //           console.log(result.text);
-  //         },
-  //         (error) => {
-  //           console.log(error.text);
-  //         },
-  //       );
-  //     setIsSubmit(true);
-  //   } catch (err) {
-  //     setError(err);
-  //   }
-  // };
   const form = useRef();
   console.log(isError, 'isError');
   console.log(isSubmit, 'isSubmit');
@@ -176,6 +157,10 @@ const Form = () => {
         name="concept"
         value={formData.concept}
         onChange={handleChange}></textarea>
+      <div className={'submitting-wrong'}>
+        <img src={errimg} alt={'err-img'} />
+        <p>Oops! Something went wrong... Please try again.</p>
+      </div>
       <div className={'button-form-box'}>
         <img src={dots} alt={'dots-form'} className={'dots-form'} />
         <div className={'hr-line-form'} />
@@ -184,7 +169,20 @@ const Form = () => {
           <span>submit</span>
         </button>
       </div>
-      {isError && <span>{isError}</span>}
+      {isError && <span className={'isError'}>{isError}</span>}
+      {isSubmit ? (
+        <div className={'success'}>
+          <img src={successImg} alt={'success-img'} />
+          <p>
+            All done! <br /> Your idea submitted successfully!
+          </p>
+        </div>
+      ) : (
+        <div className={'submitting-wrong'}>
+          <img src={errimg} alt={'err-img'} />
+          <p>Oops! Something went wrong... Please try again.</p>
+        </div>
+      )}
     </form>
   );
 };
