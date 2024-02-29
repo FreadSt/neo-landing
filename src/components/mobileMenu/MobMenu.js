@@ -20,6 +20,13 @@ export const MobMenu = ({ onClose, isOpen }) => {
     }
   }, [isOpen, location.pathname]);
 
+  const handleLinkClick = (path) => {
+    // Close the menu and set the initialActive when a link is clicked
+    setInitialActive(path);
+    setClosing(true);
+    onClose(); // Close the menu
+  };
+
   const menuClassName = isOpen
     ? 'mob-menu-wrapper menu-slide-in'
     : closing
@@ -36,7 +43,7 @@ export const MobMenu = ({ onClose, isOpen }) => {
               <Link
                 to={item.path}
                 className={`nav-title ${isActive ? 'active-link' : ''}`}
-                onClick={() => setInitialActive(item.path)}
+                onClick={handleLinkClick}
                 style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
                 {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
               </Link>

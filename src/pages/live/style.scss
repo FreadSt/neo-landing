@@ -133,7 +133,9 @@
         align-items: center;
         margin-top: 50%;
         .live-title{
+          text-align: center;
           font-size: 38px;
+          width: 100%;
         }
         .live-soon{
           max-width: 270px;
@@ -141,6 +143,7 @@
           align-self: center;
           height: 37px;
           margin-top: 20px;
+          padding: 10px 20px;
           span{
             font-size: 24px;
           }

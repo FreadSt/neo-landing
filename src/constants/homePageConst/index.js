@@ -21,24 +21,24 @@ export const NAVBAR_TABS = [
   },
   {
     title: 'news',
-    path: '/soon',
+    path: '/news',
   },
   {
     title: 'shop',
-    path: '/soon',
+    path: '/shop',
   },
   {
     title: 'services',
-    path: '/soon',
+    path: '/services',
   },
   {
     title: 'web3',
-    path: '/soon',
+    path: '/web3',
     icon: webArrow,
   },
   {
     title: 'contacts',
-    path: '/soon',
+    path: '/contacts',
   },
 ];
 

@@ -1,5 +1,4 @@
 import upperDots from '../../../assets/images/image 16.svg';
-import tabbar from '../../../assets/images/tabbar.svg';
 import { Navbar } from '../../../components/navbar/Navbar';
 import downDots from '../../../assets/images/image 18.svg';
 import './style.scss';
@@ -9,24 +8,8 @@ import { Button } from '../../../components/button/Button';
 import menuMobile from '../../../assets/images/burger-menu.svg';
 import { useState } from 'react';
 import { MobMenu } from '../../../components/mobileMenu/MobMenu';
-import GlitchSquiggly from 'react-glitch-effect/core/GlitchSquiggly';
 import './glitch.css';
-import ReactPlayer from 'react-player';
-import VideoBackground from '../../../components/videoPlayer/VideoBackground';
 import { useNavigate } from 'react-router-dom';
-import AutoPlayVideo from './AutoPlayVideo';
-import AutoplayVideoComponent from './AutoPlayVideo';
-
-const AutoPlay = () => (
-  <div
-    dangerouslySetInnerHTML={{
-      __html: `
-    <video autoPlay muted loop preload='auto' className={'video'}>
-          <source src={videoBg} />
-        </video>`,
-    }}
-  />
-);
 
 export const HomepageHeader = () => {
   const [isMobileMenuOpen, setIsMobMenuOpen] = useState(false);
@@ -52,9 +35,6 @@ export const HomepageHeader = () => {
       </ul>
     );
   };
-  const navigate = useNavigate();
-
-  const videoUrl = 'https://vimeo.com/user109067760/review/913360625/0f57eb2d22';
 
   return (
     <div className={'homepage-header-box'}>
