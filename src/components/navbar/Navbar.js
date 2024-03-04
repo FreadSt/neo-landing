@@ -1,15 +1,13 @@
-import clipleft from '../../assets/images/clipleft.svg';
-import clipright from '../../assets/images/clipright.svg';
+import React, { useEffect, useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { NAVBAR_TABS } from '../../constants/homePageConst';
-import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import './style.scss';
-import { useEffect, useState } from 'react';
 
 export const Navbar = () => {
   const location = useLocation();
   const [navbarHeight, setNavbarHeight] = useState(5);
   const [initialActive, setInitialActive] = useState(location.pathname);
+  const [isWeb3DropdownVisible, setIsWeb3DropdownVisible] = useState(false);
 
   useEffect(() => {
     setInitialActive(location.pathname);
@@ -39,26 +37,74 @@ export const Navbar = () => {
 
   return (
     <div className="navbar-wrapper" style={{ bottom: `${navbarHeight}vh` }}>
-      {/*<img className="clip-top-left" src={clipleft} alt={'navbar-clip'} />*/}
       <div className={'nav-inner-content'}>
         <div className="navigation-container">
           {NAVBAR_TABS.map((item, i) => {
             const isActive = location.pathname === item.path || initialActive === item.path;
             return (
               <div className={`tab-btn ${isActive ? 'active' : ''}`} key={i}>
-                <Link
-                  to={item.path}
-                  className={`nav-title ${isActive ? 'active-link' : ''}`}
-                  onClick={() => setInitialActive(item.path)}
-                  style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
-                  {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
-                </Link>
+                {item.dropdown ? (
+                  <>
+                    <div
+                      className="dropdown"
+                      onClick={() => {
+                        if (item.title === 'web3') {
+                          setIsWeb3DropdownVisible(!isWeb3DropdownVisible);
+                        } else {
+                          setInitialActive(item.path);
+                          setIsWeb3DropdownVisible(false);
+                        }
+                      }}>
+                      <Link
+                        to={item.path}
+                        className={`nav-title ${isActive ? 'active-link' : ''}`}
+                        onClick={() => {
+                          if (item.title === 'web3') {
+                            setIsWeb3DropdownVisible(!isWeb3DropdownVisible);
+                          } else {
+                            setInitialActive(item.path);
+                            setIsWeb3DropdownVisible(false);
+                          }
+                        }}>
+                        {item.title} {item.icon && <img src={item.icon} />}
+                      </Link>
+                      {isWeb3DropdownVisible && item.title === 'web3' && (
+                        <div className="dropdown-content">
+                          {item.dropdown.map((dropdownItem, j) => (
+                            <Link
+                              to={dropdownItem.path}
+                              key={j}
+                              className={`nav-title ${
+                                location.pathname === dropdownItem.path ? 'active-link' : ''
+                              }`}
+                              onClick={() => {
+                                setInitialActive(dropdownItem.path);
+                                setIsWeb3DropdownVisible(false);
+                              }}>
+                              {dropdownItem.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`nav-title ${isActive ? 'active-link' : ''}`}
+                    onClick={() => {
+                      setInitialActive(item.path);
+                      setIsWeb3DropdownVisible(false);
+                    }}
+                    style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
+                    {item.title} {item.icon && <img src={item.icon} />}
+                  </Link>
+                )}
               </div>
             );
           })}
         </div>
       </div>
-      {/*<img className="clip-bottom-right" src={clipright} alt={'navbar-clip-r'} />*/}
     </div>
   );
 };

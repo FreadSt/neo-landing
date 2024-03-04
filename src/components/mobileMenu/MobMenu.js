@@ -20,11 +20,16 @@ export const MobMenu = ({ onClose, isOpen }) => {
     }
   }, [isOpen, location.pathname]);
 
-  const handleLinkClick = (path) => {
-    // Close the menu and set the initialActive when a link is clicked
-    setInitialActive(path);
-    setClosing(true);
-    onClose(); // Close the menu
+  const handleLinkClick = (path, hasDropdown) => {
+    if (hasDropdown) {
+      // Toggle the display of the web3 dropdown without closing the menu
+      setInitialActive(path);
+    } else {
+      // Close the menu and set the initialActive when a link without a dropdown is clicked
+      setInitialActive(path);
+      setClosing(true);
+      onClose(); // Close the menu
+    }
   };
 
   const menuClassName = isOpen
@@ -40,13 +45,42 @@ export const MobMenu = ({ onClose, isOpen }) => {
           const isActive = location.pathname === item.path || initialActive === item.path;
           return (
             <div className={`tab-btn ${isActive ? 'active' : ''}`} key={i}>
-              <Link
-                to={item.path}
-                className={`nav-title ${isActive ? 'active-link' : ''}`}
-                onClick={handleLinkClick}
-                style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
-                {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
-              </Link>
+              {item.title === 'web3' ? (
+                <>
+                  <div
+                    className="nav-title"
+                    onClick={() => handleLinkClick(item.path, true)} // Pass true to indicate it has a dropdown
+                  >
+                    {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
+                  </div>
+                  {isActive && (
+                    <div className="web3-list">
+                      {item.dropdown.map((dropdownItem, j) => (
+                        <Link
+                          to={dropdownItem.path}
+                          key={j}
+                          className={`nav-title ${
+                            location.pathname === dropdownItem.path ? 'active-link' : ''
+                          }`}
+                          onClick={() => {
+                            setInitialActive(dropdownItem.path);
+                            onClose(); // Close the menu when a link in web3 list is clicked
+                          }}>
+                          {dropdownItem.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link
+                  to={item.path}
+                  className={`nav-title ${isActive ? 'active-link' : ''}`}
+                  onClick={() => handleLinkClick(item.path, false)} // Pass false to indicate no dropdown
+                  style={isActive ? { color: '#FFFFFF', opacity: 1 } : {}}>
+                  {item.title} {(item.mark && <p>{item.mark}</p>) || <img src={item.icon} />}
+                </Link>
+              )}
             </div>
           );
         })}

@@ -33,8 +33,12 @@ export const NAVBAR_TABS = [
   },
   {
     title: 'web3',
-    path: '/web3',
     icon: webArrow,
+    dropdown: [
+      { title: 'NEO NFTs', path: '/web3/neo-nft' },
+      { title: 'STAKE', path: '/web3/stake' },
+      { title: 'REDEEM', path: '/web3/redeem' },
+    ],
   },
   {
     title: 'contacts',

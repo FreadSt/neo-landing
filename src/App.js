@@ -8,6 +8,8 @@ import { AboutPage } from './pages/about/AboutPage';
 import { UnderConstruction } from './pages/underConstruction/SoonPage';
 import { News } from './pages/news/News';
 import { Services } from './pages/services/Services';
+import { NeoNft } from './pages/web3/neoNFT/NeoNft';
+import { NeoStaking } from './pages/web3/stake/Stake';
 function App() {
   return (
     <div className="App">
@@ -20,7 +22,10 @@ function App() {
         <Route path={'/news'} element={<News />} />
         <Route path={'/shop'} element={<UnderConstruction />} />
         <Route path={'/services'} element={<Services />} />
-        <Route path={'/web3'} element={<UnderConstruction />} />
+        {/*<Route path={'/web3'} element={<UnderConstruction />} />*/}
+        <Route path={'/web3/neo-nft'} element={<NeoNft />} />
+        <Route path={'/web3/stake'} element={<NeoStaking />} />
+        <Route path={'/web3/redeem'} element={<UnderConstruction />} />
         <Route path={'/contacts'} element={<UnderConstruction />} />
         <Route path={'/film-details/:moviePath'} element={<FilmDetails />} />
       </Routes>

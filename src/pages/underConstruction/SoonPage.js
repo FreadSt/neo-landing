@@ -15,8 +15,8 @@ export const UnderConstruction = () => {
   };
   return (
     <div className={'soon-page-wrapper'}>
+      <Header />
       <div className={'soon-page-inner-box'}>
-        <Header />
         <div className={'soon-title'}>
           <h2>
             This page <br /> is under construction

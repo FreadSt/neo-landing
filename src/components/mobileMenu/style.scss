@@ -57,6 +57,16 @@
         opacity: 1;
         font-family: actay_wide, "sans-serif";
       }
+      .web3-list{
+        margin-top: 10px;
+        position: relative;
+        a{
+          font-size: 20px;
+        }
+      }
+    }
+    .tab-btn.active{
+      flex-direction: column;
     }
   }
 }
