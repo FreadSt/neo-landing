@@ -6,7 +6,7 @@ const CustomDropdown = ({ options, value, onChange, name }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (optionValue) => {
-    onChange(optionValue); // Call the onChange callback
+    onChange(optionValue);
     setIsOpen(false);
   };
 

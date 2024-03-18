@@ -3,10 +3,10 @@ import wallet from '../../../../assets/images/wallet connect.svg';
 import refresh from '../../../../assets/images/Linear/Arrows/Refresh.svg';
 import './style.scss';
 import { Navbar } from '../../../../components/navbar/Navbar';
+import { useState } from 'react';
 import menuMobile from '../../../../assets/images/burger-menu.svg';
 import { MobMenu } from '../../../../components/mobileMenu/MobMenu';
-import { useState } from 'react';
-export const HeaderStaking = () => {
+export const HeaderRedeem = () => {
   const [isMobileMenuOpen, setIsMobMenuOpen] = useState(false);
   const isMobile = window.innerWidth <= 430;
 
@@ -14,7 +14,7 @@ export const HeaderStaking = () => {
     setIsMobMenuOpen((prev) => !prev);
   };
   return (
-    <div className={'staking-header-wrapper'}>
+    <div className={'redeem-header-wrapper'}>
       <Header />
       {isMobile ? (
         <div className={'mobile-title-box'}>
@@ -26,8 +26,8 @@ export const HeaderStaking = () => {
             </button>
           </div>
           <h2 className={'staking-title'}>
-            neo <br />
-            staking
+            redeem <br />
+            rewards
           </h2>
           <div className={'balance-mob-box'}>
             <button className={'button-balance'}>
@@ -38,7 +38,7 @@ export const HeaderStaking = () => {
         </div>
       ) : (
         <div className={'title-box'}>
-          <h2 className={'staking-title'}>neo staking</h2>
+          <h2 className={'redeem-title'}>redeem rewards</h2>
           <div className={'balance-box'}>
             <button className={'button-balance'}>
               <img src={wallet} alt={'btn-wallet'} className={'wallet-btn'} />

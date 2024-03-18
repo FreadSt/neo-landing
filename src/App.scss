@@ -1,36 +1,14 @@
 :root {
   --main-opacity: 0.9;
-  // interface colors
   --snow-white: #FFF;
   --white: #FAFAFA;
-  --black: #0E0E0E;
-  --dark: #161514; // default text color
-  --purple: #666DA5;
-  --pacific: #5B93A9;
-  --green-bg-default: #7E9D00;
-  --green-bg-hover: #98B133;
-  --green-bg-pressed: #A5BB4D;
-  --color-default: #C0C0C5;
-  --yellow: #EDB833;
-  --orange: #D36700;
-  --red: #FF5656;
   --grey: #95959D;
   --light-grey: #F4F4F5;
-  // border
-  --border-color: #E8E8E8;
-  //  tabs
-  --tab-color-pressed: #2A2B3B; // pressed text color
-  --tab-color-default: #6A6B76; // default text color
-  // building blocks icons
-
-  // Text Editor
-  --te-icon-bg-pressed: #EAEAEC; // pressed background
-  --te-icon-bg-hover: #D4D5D8; // hover background
-  // icon button
-  --btn-icon-bg-default: #EAEAEC; // default background
-  --btn-icon-bg-hover: #D4D5D8; // hover background
-  --btn-icon-bg-pressed: #F4F4F5; // pressed background
-  --btn-icon-color-default: #2A2B3B; // default icon color
-  // slider
-  --slider-bg-default: #EAEAEC; // default background
+  --white-darkened: #FAFAFA80;
+  --tab-color-default: #6A6B76;
+  --tab-color-pressed: #2A2B3B;
+  --card-dark: #151515;
+  --black: #0E0E0E;
+  --dark: #161514;
+  --green: #00FF84;
 }

@@ -7,7 +7,7 @@ import play from '../../assets/images/play-mob.svg';
 import './glitch.scss';
 import bgBorder from '../../assets/images/buttonSvg.svg';
 import BTN_mob from '../../assets/images/BTN_Mobile.svg';
-export const Button = ({ text, style, onClick, width }) => {
+export const Button = ({ text, style, onClick, width, isFilled }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 430);
 
   useEffect(() => {
